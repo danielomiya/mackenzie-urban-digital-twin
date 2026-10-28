@@ -1,0 +1,277 @@
+[project]
+name = "mudt"
+version = "1.0.0"
+description = "Mackenzie Urban Digital Twin"
+readme = "README.md"
+authors = [
+    { name = "Daniel Omiya", email = "10356170@mackenzista.com.br" },
+    { name = "Gabriel Mason", email = "10409928@mackenzista.com.br" },
+    { name = "Pedro Bacic", email = "10382476@mackenzista.com.br" },
+]
+requires-python = ">=3.14"
+dependencies = [
+    "geopandas>=1.2.0",
+    "httpx>=0.28.1",
+    "laspy[lazrs]>=2.7.0",
+    "pydantic>=2.14.1",
+    "pyproj>=3.8.0",
+    "pyyaml>=6.0.3",
+    "shapely>=2.2.0",
+    "structlog>=26.1.0",
+    "typer>=0.27.3",
+]
+
+[build-system]
+requires = ["uv_build"]
+build-backend = "uv_build"
+
+[dependency-groups]
+lint = ["ruff"]
+type_check = ["mypy"]
+test = ["pytest"]
+dev = [
+    { include-group = "lint" },
+    { include-group = "type_check" },
+    { include-group = "test" },
+    "prek",
+]
+
+## ruff settings ##
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+extend-select = [
+    # Enable entire ruff rule section
+    "I",     # Missing required import (auto-fixable)
+    "UP",    # Pyupgrade
+    "ASYNC", # subset of flake8-async rules
+    "ISC",   # Checks for implicit literal string concatenation (auto-fixable)
+    "TC",    # Rules around TYPE_CHECKING blocks
+    "G",     # flake8-logging-format rules
+    "LOG",   # flake8-logging rules, most of them autofixable
+    "PT",    # flake8-pytest-style rules
+    "B015",  # Useless comparison: bare `a == b` is a no-op; prepend `assert` or remove
+    "TID25", # flake8-tidy-imports rules
+    "E",     # pycodestyle rules
+    "W",     # pycodestyle rules
+    # Warning (PLW) re-implemented in ruff from Pylint
+    "PLW0120", # else clause on loop without a break statement; remove the else and dedent its contents
+    "PLW0127", # Self-assignment of variable
+    "PLW0128", # Redeclared variable {name} in assignment
+    "PLW0129", # Asserting on an empty string literal will never pass
+    "PLW0131", # Named expression used without context
+    "PLW0133", # Missing raise statement on exception
+    "PLW0177", # Comparing against a NaN value; use math.isnan instead
+    "PLW0211", # First argument of a static method should not be named {argument_name}
+    "PLW0245", # super call is missing parentheses
+    "PLW0406", # Module {name} imports itself
+    "PLW0602", # Using global for {name} but no assignment is done
+    "PLW0604", # global at module level is redundant
+    "PLW0642", # Reassigned {} variable in {method_type} method
+    "PLW0711", # Exception to catch is the result of a binary and operation
+    "PLW1501", # {mode} is not a valid mode for open
+    "PLW1507", # Shallow copy of os.environ via copy.copy(os.environ)
+    "PLW1508", # Invalid type for environment variable default; expected str or None
+    "PLW1509", # preexec_fn argument is unsafe when using threads
+    "PLW1510", # subprocess.run without explicit check argument
+    "PLW1641", # Object does not implement __hash__ method
+    "PLW2101", # Threading lock directly created in with statement has no effect
+    "PLW2901", # Outer {outer_kind} variable {name} overwritten by inner {inner_kind} target
+    "PLW3301", # Nested {func} calls can be flattened
+    "PLE1205", # Logging format string has too many arguments (extra args are silently dropped)
+    # Per rule enables
+    "RUF006", # Checks for asyncio dangling task
+    "RUF015", # Checks for unnecessary iterable allocation for first element
+    "RUF019", # Checks for unnecessary key check
+    "RUF100", # Unused noqa (auto-fixable)
+    # We ignore more pydocstyle than we enable, so be more selective at what we enable
+    "D1",
+    "D2",
+    "D213",   # Conflicts with D212.  Both can not be enabled.
+    "D3",
+    "D400",
+    "D401",
+    "D402",
+    "D403",
+    "D412",
+    "D419",
+    "PGH004", # Use specific rule codes when using noqa
+    "PGH005", # Invalid unittest.mock.Mock methods/attributes/properties
+    "S101",   # Checks use `assert` outside the test cases, test cases should be added into the exclusions
+    "SIM107", # Don't use `return` in `try`-`except` and `finally`
+    "SIM300", # Checks for conditions that position a constant on the left-hand side of the comparison
+    # operator, rather than the right-hand side.
+    "B004",   # Checks for use of hasattr(x, "__call__") and replaces it with callable(x)
+    "B006",   # Checks for uses of mutable objects as function argument defaults.
+    "B007",   # Checks for unused variables in the loop
+    "B008",   # Do not perform function call in argument defaults (use extend-immutable-calls for FastAPI DI)
+    "B012",   # Checks for `break`, `continue`, and `return` statements in `finally` blocks
+    "B017",   # Checks for pytest.raises context managers that catch Exception or BaseException.
+    "B019",   # Use of functools.lru_cache or functools.cache on methods can lead to memory leaks
+    "B023",   # Function definition does not bind loop variable (late binding of closure over loop var)
+    "B028",   # No explicit stacklevel keyword argument found
+    "TRY002", # Prohibit use of `raise Exception`, use specific exceptions instead.
+    "RET505", # Unnecessary {branch} after return statement
+    "RET506", # Unnecessary {branch} after raise statement
+    "RET507", # Unnecessary {branch} after continue statement
+    "RET508", # Unnecessary {branch} after break statement
+    "SIM105", # Use contextlib.suppress({exception}) instead of try-except-pass
+    "PTH206", # Checks for uses of .split(os.sep)
+]
+ignore = [
+    "D100",  # Unwanted; Docstring at the top of every file.
+    "D102",  # Unwanted; Missing docstring in public method
+    "D103",  # Unwanted; Missing docstring in public function
+    "D104",  # Unwanted; Docstring at the top of every `__init__.py` file.
+    "D105",  # Unwanted; See https://lists.apache.org/thread/8jbg1dd2lr2cfydtqbjxsd6pb6q2wkc3
+    "D107",  # Unwanted; Docstring in every constructor is unnecessary if the class has a docstring.
+    "D203",  # Conflicts with D211.  Both can not be enabled.
+    "D212",  # Conflicts with D213.  Both can not be enabled.
+    "E731",  # Do not assign a lambda expression, use a def
+    "TC003", # Do not move imports from stdlib to TYPE_CHECKING block
+    "PT007", # Wrong type of values in @pytest.mark.parametrize
+    "PT013", # silly rule prohibiting e.g. `from pytest import param`
+    "PT019", # fixture without value is injected as parameter, use @pytest.mark.usefixtures instead
+    # Rules below explicitly set off which could overlap with Ruff's formatter
+    # as it recommended by https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
+    # Except ISC rules
+    "W191",
+    "E111",
+    "E114",
+    "E117",
+    "D206",
+    "D300",
+    "Q000",
+    "Q001",
+    "Q002",
+    "Q003",
+    "COM812",
+    "COM819",
+    "E501",   # Formatted code may exceed the line length, leading to line-too-long (E501) errors.
+    "ISC004", # Implicit string concat in a collection literal; 109 sites, unsafe autofix
+    # LOG004 is not a mechanical replacement: switching to `.error()` where an exception is
+    # in flight silently drops the traceback, while leaving `.exception()` where none is
+    # only prints a bare `NoneType: None`. Review already caught one bad guess in 13.
+    "LOG004", # `.exception()` outside an exception handler; 13 sites
+    # Both became reportable once the baseline moved to Python 3.11. Neither is a mechanical
+    # change: StrEnum alters what ``str()`` and ``format()`` return for serialized enum values,
+    # and ``asyncio.timeout`` means dropping the public ``timeout`` parameter from async APIs.
+    "UP042",    # Class inherits from both `str` and `enum.Enum`; 98 sites
+    "ASYNC109", # Async function with a `timeout` parameter; 49 sites
+]
+unfixable = [
+    # PT022 replace empty `yield` to empty `return`. Might be fixed with a combination of PLR1711
+    # In addition, it can't do anything with invalid typing annotations, protected by mypy.
+    "PT022",
+]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint.isort]
+required-imports = ["from __future__ import annotations"]
+combine-as-imports = true
+
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "local-folder",
+    "testing",
+]
+
+known-first-party = ["mudt"]
+
+[tool.ruff.lint.isort.sections]
+testing = ["tests", "unit", "integration"]
+
+[tool.ruff.lint.per-file-ignores]
+# Ignore pydoc style from these
+"*.pyi" = ["D"]
+"scripts/*" = ["D", "PT"] # In addition ignore pytest specific rules
+"**/tests/*" = ["S101"]
+
+[tool.ruff.lint.flake8-tidy-imports]
+# Disallow all relative imports.
+ban-relative-imports = "all"
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+# Deprecated in Python 3.11, Pending Removal in Python 3.15: https://github.com/python/cpython/issues/90817
+# Deprecation warning in Python 3.11 also recommends using locale.getencoding but it available in Python 3.11
+"locale.getdefaultlocale".msg = "Use locale.setlocale() and locale.getlocale() instead."
+# Deprecated in Python 3.12: https://github.com/python/cpython/issues/103857
+"datetime.datetime.utcnow".msg = "Use datetime.datetime.now(tz=datetime.timezone.utc)"
+"datetime.datetime.utcfromtimestamp".msg = "Use datetime.datetime.fromtimestamp(tz=datetime.timezone.utc)"
+# Uses deprecated in Python 3.12 `datetime.datetime.utcfromtimestamp`
+
+# Use root logger by a mistake / IDE autosuggestion
+# If for some reason root logger required it could obtained by logging.getLogger("root")
+"logging.debug".msg = "Use structlog instead"
+"logging.info".msg = "Use structlog instead"
+"logging.warning".msg = "Use structlog instead"
+"logging.error".msg = "Use structlog instead"
+"logging.exception".msg = "Use structlog instead"
+"logging.fatal".msg = "Use structlog instead"
+"logging.critical".msg = "Use structlog instead"
+"logging.log".msg = "Use structlog instead"
+# unittest related restrictions
+"unittest.TestCase".msg = "Use pytest compatible classes: https://docs.pytest.org/en/stable/getting-started.html#group-multiple-tests-in-a-class"
+"unittest.skip".msg = "Use `pytest.mark.skip` instead: https://docs.pytest.org/en/stable/reference/reference.html#marks"
+"unittest.skipIf".msg = "Use `pytest.mark.skipif` instead: https://docs.pytest.org/en/stable/reference/reference.html#marks"
+"unittest.skipUnless".msg = "Use `pytest.mark.skipif` instead: https://docs.pytest.org/en/stable/reference/reference.html#marks"
+"unittest.expectedFailure".msg = "Use `pytest.mark.xfail` instead: https://docs.pytest.org/en/stable/reference/reference.html#marks"
+
+[tool.ruff.lint.flake8-type-checking]
+exempt-modules = ["typing", "typing_extensions"]
+
+[tool.ruff.lint.flake8-pytest-style]
+mark-parentheses = false
+fixture-parentheses = false
+
+## coverage.py settings ##
+[tool.coverage.run]
+branch = true
+relative_files = true
+omit = []
+
+[tool.coverage.report]
+skip_empty = true
+exclude_also = [
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "@(abc\\.)?abstractmethod",
+    "@(typing(_extensions)?\\.)?overload",
+    "if (typing(_extensions)?\\.)?TYPE_CHECKING:",
+]
+
+## mypy settings ##
+[tool.mypy]
+ignore_missing_imports = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = false
+pretty = true
+show_error_codes = true
+disable_error_code = ["annotation-unchecked"]
+namespace_packages = true
+explicit_package_bases = true
+exclude = [
+    ".*/node_modules/.*",
+    # Exclude hidden files and directories
+    ".*/\\..*",
+]
+mypy_path = ["$MYPY_CONFIG_FILE_DIR/src", "$MYPY_CONFIG_FILE_DIR/scripts"]
+
+## uv settings ##
+[tool.uv]
+required-version = ">=0.13.5"
+exclude-newer = "7 days"
+
+[tool.uv.pip]
+exclude-newer = "7 days"

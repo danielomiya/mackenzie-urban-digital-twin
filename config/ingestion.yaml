@@ -1,0 +1,57 @@
+---
+datasets:
+  - dataset_id: geoportal:edificacao
+    adapter: wfs
+    native_crs: EPSG:31983
+    retrieval:
+      endpoint: https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/geoportal/wfs
+      type_names: geoportal:edificacao
+      srs_name: EPSG:31983
+      output_format: application/json
+
+  - dataset_id: geoportal:lote_cidadao
+    adapter: wfs
+    native_crs: EPSG:31983
+    retrieval:
+      endpoint: https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/geoportal/wfs
+      type_names: geoportal:lote_cidadao
+      srs_name: EPSG:31983
+      output_format: application/json
+
+  - dataset_id: geoportal:segmento_logradouro
+    adapter: wfs
+    native_crs: EPSG:31983
+    retrieval:
+      endpoint: https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/geoportal/wfs
+      type_names: geoportal:segmento_logradouro
+      srs_name: EPSG:31983
+      output_format: application/json
+
+  - dataset_id: geoportal:quadricula_folha_mdt_mds_2020
+    adapter: wfs
+    native_crs: EPSG:31983
+    retrieval:
+      endpoint: https://wfs.geosampa.prefeitura.sp.gov.br/geoserver/geoportal/wfs
+      type_names: geoportal:quadricula_folha_mdt_mds_2020
+      srs_name: EPSG:31983
+      output_format: application/json
+
+  - dataset_id: mdt_2020
+    adapter: point_cloud_tile
+    native_crs: EPSG:31983
+    retrieval:
+      endpoint: https://download.geosampa.prefeitura.sp.gov.br/PaginasPublicas/downloadArquivo.aspx
+      orig: DownloadMapaArticulacao
+      arq_template: MDT_2020\{tile}.zip
+      arq_tipo: MAPA_ARTICULACAO
+      tile_index_layer: geoportal:quadricula_folha_mdt_mds_2020
+
+  - dataset_id: mds_2020
+    adapter: point_cloud_tile
+    native_crs: EPSG:31983
+    retrieval:
+      endpoint: https://download.geosampa.prefeitura.sp.gov.br/PaginasPublicas/downloadArquivo.aspx
+      orig: DownloadMapaArticulacao
+      arq_template: MDS_2020\{tile}.zip
+      arq_tipo: MAPA_ARTICULACAO
+      tile_index_layer: geoportal:quadricula_folha_mdt_mds_2020
