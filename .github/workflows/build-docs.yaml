@@ -6,12 +6,12 @@ name: Docs PDF
     branches: [main]
     paths:
       - "docs/**"
-      - ".github/workflows/docs.yml"
+      - ".github/workflows/build-docs.yaml"
   pull_request:
     types: [opened, synchronize, reopened, closed]
     paths:
       - "docs/**"
-      - ".github/workflows/docs.yml"
+      - ".github/workflows/build-docs.yaml"
 
 permissions: {}
 
