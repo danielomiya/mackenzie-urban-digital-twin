@@ -144,134 +144,253 @@
 \SingleSpacing
 
 \begin{document}
-	\selectlanguage{brazil}
+\selectlanguage{brazil}
 
-	% Retira espaço extra obsoleto entre as frases.
-	\frenchspacing
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing
 
-	% ----------------------------------------------------------
-	% ELEMENTOS PRÉ-TEXTUAIS
-	% ----------------------------------------------------------
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
 
-	%---
-	%
-	% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
-	% e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
-	% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
-	%
-	%---
+%---
+%
+% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
+% e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
+% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+%
+%---
 
-	% página de titulo principal (obrigatório)
-	\maketitle
-	% titulo em outro idioma (opcional)
+% página de titulo principal (obrigatório)
+\maketitle
+% titulo em outro idioma (opcional)
 
-	\begin{resumoumacoluna}
-		\textit{Plataformas de Gêmeos Digitais Urbanos (GDU) integram dados provenientes de múltiplos sistemas heterogêneos para suportar o monitoramento e a gestão inteligente de ambientes urbanos. No entanto, a ausência de um vocabulário semântico comum entre esses sistemas compromete a interoperabilidade e limita a capacidade de raciocínio automatizado sobre os dados coletados. Este trabalho propõe a modelagem e implementação de uma ontologia de domínio, alinhada aos padrões CityGML e SOSA/SSN, para representar entidades físicas, sensores e relações espaciais no contexto de um campus universitário (tomado como instância controlada de GDU). A pesquisa adota a metodologia Design Science Research (DSR), compreendendo a revisão dos padrões de referência, a modelagem da ontologia, a definição de um mecanismo de exposição, e a validação. Os resultados esperados incluem uma ontologia funcional capaz de responder a perguntas semânticas do campus, promovendo interoperabilidade semântica entre fontes de dados diversas na plataforma GDU do campus Higienópolis da Universidade Presbiteriana Mackenzie.}
+\begin{resumoumacoluna}
+  \textit{Plataformas de Gêmeos Digitais Urbanos (GDU) integram dados provenientes de múltiplos sistemas heterogêneos para suportar o monitoramento e a gestão inteligente de ambientes urbanos.
+    No entanto, a ausência de um vocabulário semântico comum entre esses sistemas compromete a
+    interoperabilidade e limita a capacidade de raciocínio automatizado sobre os dados coletados.
+    Este trabalho propõe a modelagem e implementação de uma ontologia de domínio, alinhada aos padrões
+    CityGML e SOSA/SSN, para representar entidades físicas, sensores e relações espaciais no contexto
+    de um campus universitário (tomado como instância controlada de GDU).
+    A pesquisa adota a metodologia Design Science Research (DSR), compreendendo a revisão dos padrões
+    de referência, a modelagem da ontologia, a definição de um mecanismo de exposição, e a validação.
+    Os resultados esperados incluem uma ontologia funcional capaz de responder a perguntas semânticas
+    do campus, promovendo interoperabilidade semântica entre fontes de dados diversas na plataforma GDU
+    do campus Higienópolis da Universidade Presbiteriana Mackenzie.
+  }
 
-		\vspace{\onelineskip}
+  \vspace{\onelineskip}
 
-		\noindent
-		\textbf{Palavras-chave}: cidades inteligentes; gêmeos digitais urbanos; ontologia; dados semânticos; CityGML; SOSA/SSN.
-	\end{resumoumacoluna}
+  \noindent
+  \textbf{Palavras-chave}: cidades inteligentes; gêmeos digitais urbanos; ontologia; dados semânticos; CityGML; SOSA/SSN.
+\end{resumoumacoluna}
 
-	\renewcommand{\resumoname}{Abstract}
-	\begin{resumoumacoluna}
-		\begin{otherlanguage*}{english}
-			\textit{Urban Digital Twin (UDT) platforms integrate data from multiple heterogeneous systems to support the monitoring and intelligent management of urban environments. However, the absence of a common semantic vocabulary among these systems compromises interoperability and limits the ability to perform automated reasoning over the collected data. This work proposes the modeling and implementation of a domain ontology, aligned with the CityGML and SOSA/SSN standards, to represent physical entities, sensors, and spatial relationships within the context of a university campus (used as a controlled UDT instance). The research adopts the Design Science Research (DSR) methodology, encompassing the review of reference standards, ontology modeling, the definition of an exposure mechanism, and validation. The expected results include a functional ontology capable of answering semantic queries about the campus, promoting semantic interoperability among diverse data sources within the UDT platform of Universidade Presbiteriana Mackenzie.}
+\renewcommand{\resumoname}{Abstract}
+\begin{resumoumacoluna}
+  \begin{otherlanguage*}{english}
+    \textit{Urban Digital Twin (UDT) platforms integrate data from multiple heterogeneous systems to support the monitoring and intelligent management of urban environments.
+      However, the absence of a common semantic vocabulary among these systems compromises
+      interoperability and limits the ability to perform automated reasoning over the collected data.
+      This work proposes the modeling and implementation of a domain ontology, aligned with the CityGML
+      and SOSA/SSN standards, to represent physical entities, sensors, and spatial relationships within
+      the context of a university campus (used as a controlled UDT instance).
+      The research adopts the Design Science Research (DSR) methodology, encompassing the review of
+      reference standards, ontology modeling, the definition of an exposure mechanism, and validation.
+      The expected results include a functional ontology capable of answering semantic queries about the
+      campus, promoting semantic interoperability among diverse data sources within the UDT platform of
+      Universidade Presbiteriana Mackenzie.
+    }
 
-			\vspace{\onelineskip}
+    \vspace{\onelineskip}
 
-			\noindent
-			\textbf{Keywords}: smart cities; urban digital twins; ontology; semantic data; CityGML; SOSA/SSN.
-		\end{otherlanguage*}
-	\end{resumoumacoluna}
+    \noindent
+    \textbf{Keywords}: smart cities; urban digital twins; ontology; semantic data; CityGML; SOSA/SSN.
+  \end{otherlanguage*}
+\end{resumoumacoluna}
 
-	% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
-	% ---
+% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
+% ---
 
-	% ----------------------------------------------------------
-	% ELEMENTOS TEXTUAIS
-	% ----------------------------------------------------------
-	\textual
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
 
-	% ----------------------------------------------------------
-	% Introdução
-	% ----------------------------------------------------------
-	\section{Introdução}
+% ----------------------------------------------------------
+% Introdução
+% ----------------------------------------------------------
+\section{Introdução}
 
-	De acordo com o relatório de Perspectiva de Urbanização Mundial da \citeonline{undesa2025wup}, as cidades são o lar de mais de 45\% da população mundial, dobro da proporção de 1950, e projetado para chegar a dois terços até 2050. Esse fenômeno de crescimento acelerado das cidades eleva grandemente a complexidade de prover infraestrutura de transporte, energia, saneamento, e governança; torna ineficiente e insuficiente os modelos tradicionais de gestão urbana, muitas vezes com dados fragmentados em diversos sistemas heterogêneos. Nesse cenário, surgem as \textit{Smart Cities} (Cidades Inteligentes), dotadas do uso de Internet das Coisas (IoT), de Inteligência Artificial (IA), e da análise de grandes quantidades de dados (Big Data), que representaram um salto no planejamento urbano, melhorando a qualidade de vida, a eficiência da operação e dos serviços urbanos, e a tomada de decisão pública \cite{WEIL2023104862}.
+De acordo com o relatório de Perspectiva de Urbanização Mundial da \citeonline{undesa2025wup}, as
+cidades são o lar de mais de 45\% da população mundial, dobro da proporção de 1950, e projetado
+para chegar a dois terços até 2050.
+Esse fenômeno de crescimento acelerado das cidades eleva grandemente a complexidade de prover
+infraestrutura de transporte, energia, saneamento, e governança; torna ineficiente e insuficiente
+os modelos tradicionais de gestão urbana, muitas vezes com dados fragmentados em diversos sistemas
+heterogêneos.
+Nesse cenário, surgem as \textit{Smart Cities} (Cidades Inteligentes), dotadas do uso de Internet
+das Coisas (IoT), de Inteligência Artificial (IA), e da análise de grandes quantidades de dados
+(Big Data), que representaram um salto no planejamento urbano, melhorando a qualidade de vida, a
+eficiência da operação e dos serviços urbanos, e a tomada de decisão pública \cite{WEIL2023104862}.
 
-	Nesse contexto, os Gêmeos Digitais Urbanos (GDU) despontam como uma tecnologia para evoluir ainda mais a gestão e o planejamento urbano. Sendo o Gêmeo Digital definido como uma representação virtual de um objeto da realidade, atualizado constantemente num fluxo de dados bidirecional entre os mundos físico e digital. Quando aplicado à escala urbana, torna-se uma plataforma capaz de monitorar, analisar e prever sistemas complexos em tempo real. Casos como o projeto \textit{Virtual Singapore} e a iniciativa Helsinki 3D+ demonstram o poder deste tipo de integração, sendo usados até mesmo para resposta a emergências \cite{FERREBIGORRA2022103905, WEIL2023104862}.
+Nesse contexto, os Gêmeos Digitais Urbanos (GDU) despontam como uma tecnologia para evoluir ainda
+mais a gestão e o planejamento urbano.
+Sendo o Gêmeo Digital definido como uma representação virtual de um objeto da realidade, atualizado
+constantemente num fluxo de dados bidirecional entre os mundos físico e digital.
+Quando aplicado à escala urbana, torna-se uma plataforma capaz de monitorar, analisar e prever
+sistemas complexos em tempo real.
+Casos como o projeto \textit{Virtual Singapore} e a iniciativa Helsinki 3D+ demonstram o poder
+deste tipo de integração, sendo usados até mesmo para resposta a emergências
+\cite{FERREBIGORRA2022103905, WEIL2023104862}.
 
-	Embora seja uma tecnologia com um grande potencial, ela enfrenta uma série de desafios na sua concepção, oriundos ainda da fragmentação dos dados necessários em sistemas que falam um dialeto diferente cada, como: sensores de IoT, modelos de informação de edificações, dados geoespaciais em padrões como CityGML, imagens de câmeras, drones e estações meteorológicas, entre outros. Por exemplo, um sensor de IoT pode registrar a temperatura como um valor inteiro em graus Célsius, enquanto a estação meteorológica poderia usar Fahrenheit. Essa dificuldade de interoperabilidade é chamada de \textit{semantic gap} (lacuna semântica), como apontado por \citeonline{WEIL2023104862}.
+Embora seja uma tecnologia com um grande potencial, ela enfrenta uma série de desafios na sua
+concepção, oriundos ainda da fragmentação dos dados necessários em sistemas que falam um dialeto
+diferente cada, como: sensores de IoT, modelos de informação de edificações, dados geoespaciais em
+padrões como CityGML, imagens de câmeras, drones e estações meteorológicas, entre outros.
+Por exemplo, um sensor de IoT pode registrar a temperatura como um valor inteiro em graus Célsius,
+enquanto a estação meteorológica poderia usar Fahrenheit.
+Essa dificuldade de interoperabilidade é chamada de \textit{semantic gap} (lacuna semântica), como
+apontado por \citeonline{WEIL2023104862}.
 
-    Superar essa dificuldade requer revisar o conhecimento em comum, atribuindo um significado formal e objetivo a cada entidade presente no domínio. Nesse sentido, as ontologias formais apresentam-se como uma abordagem promissora \cite{metral_ontologybased_2010}. Elas permitem que sistemas compreendam e interoperem com dados de múltiplas origens a partir de um vocabulário comum e de regras de inferência lógica.
+Superar essa dificuldade requer revisar o conhecimento em comum, atribuindo um significado formal e
+objetivo a cada entidade presente no domínio.
+Nesse sentido, as ontologias formais apresentam-se como uma abordagem promissora
+\cite{metral_ontologybased_2010}.
+Elas permitem que sistemas compreendam e interoperem com dados de múltiplas origens a partir de um
+vocabulário comum e de regras de inferência lógica.
 
-    O presente trabalho tem como objeto de estudo a aplicação dessas tecnologias no contexto do campus Higienópolis da Universidade Presbiteriana Mackenzie (UPM), adotando como instância representativa um GDU em escala reduzida. A pesquisa é conduzida sob o paradigma da \textit{Design Science Research} (DSR), que orienta o processo de construção e avaliação de artefatos computacionais como resposta a problemas práticos relevantes \cite{hevner_2004}, sendo a ontologia de domínio proposta o artefato central a ser desenvolvido, avaliado e documentado.
-    
-    O restante deste trabalho está organizado da seguinte forma: o Capítulo 2 apresenta a revisão teórica dos fundamentos e padrões envolvidos; o Capítulo 3 descreve a metodologia adotada; o Capítulo 4 detalha a arquitetura e a modelagem da ontologia proposta; o Capítulo 5 apresenta a validação por casos de uso; e o Capítulo 6 traz as considerações finais.
+O presente trabalho tem como objeto de estudo a aplicação dessas tecnologias no contexto do campus
+Higienópolis da Universidade Presbiteriana Mackenzie (UPM), adotando como instância representativa
+um GDU em escala reduzida.
+A pesquisa é conduzida sob o paradigma da \textit{Design Science Research} (DSR), que orienta o
+processo de construção e avaliação de artefatos computacionais como resposta a problemas práticos
+relevantes \cite{hevner_2004}, sendo a ontologia de domínio proposta o artefato central a ser
+desenvolvido, avaliado e documentado.
 
-	\section{Referencial Teórico}
+O restante deste trabalho está organizado da seguinte forma: o Capítulo 2 apresenta a revisão
+teórica dos fundamentos e padrões envolvidos; o Capítulo 3 descreve a metodologia adotada; o
+Capítulo 4 detalha a arquitetura e a modelagem da ontologia proposta; o Capítulo 5 apresenta a
+validação por casos de uso; e o Capítulo 6 traz as considerações finais.
 
-	O Gêmeo Digital é um conceito introduzido por Michael Grieves em 2003, quando "apresentou a versão digital de um produto físico" \apud[p.~7]{Opoku_2021}{Gomes_2025}, e trata-se desta representação virtual de um objeto real que é atualizada continuamente através da integração entre os sistemas físico e digital \cite{DIHAN2024e26503}. Gêmeos Digitais aplicados à gestão urbana começaram a surgir por volta de 2018, potencializados pelo conceito das \textit{smart cities}, onde cidadãos e a administração pública cooperam em prol de tornar a cidade mais eficiente, inteligente, sustentável, segura, inclusiva e democrática.
+\section{Referencial Teórico}
 
-	Os Gêmeos Digitais Urbanos (GDU) são relativamente recentes; porém, vale destacar que não são a primeira tecnologia aplicada à geografia urbana, que, na década de 2000, já contava com o \textit{Building Information Modeling} (BIM) e o \textit{Geographic Information System} (GIS), os quais são modelagens 3D das edificações e do espaço externo. A diferença fundamental entre estes e o GDU reside no fluxo de dados: enquanto o BIM e o GIS são modelos estáticos, o Gêmeo Digital é dinâmico e projetado para atuar com tecnologias de IoT, refletindo assim sempre informações do mundo real, como temperatura, ruído sonoro, ocupação, etc.
+O Gêmeo Digital é um conceito introduzido por Michael Grieves em 2003, quando "apresentou a versão
+digital de um produto físico" \apud[p.~7]{Opoku_2021}{Gomes_2025}, e trata-se desta representação
+virtual de um objeto real que é atualizada continuamente através da integração entre os sistemas
+físico e digital \cite{DIHAN2024e26503}.
+Gêmeos Digitais aplicados à gestão urbana começaram a surgir por volta de 2018, potencializados
+pelo conceito das \textit{smart cities}, onde cidadãos e a administração pública cooperam em prol
+de tornar a cidade mais eficiente, inteligente, sustentável, segura, inclusiva e democrática.
 
-	Contudo, ainda há um problema latente de falta de padronização e de interoperabilidade na implementação dos GDUs, visto que poucos deles conseguem compartilhar dados com outros GDUs ou organizações \cite{FERREBIGORRA2022103905}. Dessa demanda, em 2008, foi desenvolvido pelo \textit{Open Geospatial Consortium} (OGC) o \textit{City Geography Markup Language} (CityGML), um padrão internacional para representar e trocar dados de modelos 3D de cidades. Este já é usado em regiões da Europa, sendo que todas as capitais europeias disponibilizam modelos CityGML, bem como alguns países na Ásia e na África \cite{buildings13071758}.
+Os Gêmeos Digitais Urbanos (GDU) são relativamente recentes; porém, vale destacar que não são a
+primeira tecnologia aplicada à geografia urbana, que, na década de 2000, já contava com o
+\textit{Building Information Modeling} (BIM) e o \textit{Geographic Information System} (GIS), os
+quais são modelagens 3D das edificações e do espaço externo.
+A diferença fundamental entre estes e o GDU reside no fluxo de dados: enquanto o BIM e o GIS são
+modelos estáticos, o Gêmeo Digital é dinâmico e projetado para atuar com tecnologias de IoT,
+refletindo assim sempre informações do mundo real, como temperatura, ruído sonoro, ocupação, etc.
 
-	O CityGML representa um grande passo na padronização da troca de informação entre sistemas de GDUs. Todavia, segundo \citeonline[p.~103, tradução nossa]{metral_ontologybased_2010}, "[...] desenvolver um modelo urbano universal único é impossível; a percepção da realidade urbana é diversa e múltipla". Por isso, propõe o uso de ontologias formais como ponte semântica entre diferentes modelos urbanos, enquanto mantém o CityGML como modelo genérico para conceitos centrais compartilhados por diferentes representações especializadas de dados urbanos.
+Contudo, ainda há um problema latente de falta de padronização e de interoperabilidade na
+implementação dos GDUs, visto que poucos deles conseguem compartilhar dados com outros GDUs ou
+organizações \cite{FERREBIGORRA2022103905}.
+Dessa demanda, em 2008, foi desenvolvido pelo \textit{Open Geospatial Consortium} (OGC) o
+\textit{City Geography Markup Language} (CityGML), um padrão internacional para representar e
+trocar dados de modelos 3D de cidades.
+Este já é usado em regiões da Europa, sendo que todas as capitais europeias disponibilizam modelos
+CityGML, bem como alguns países na Ásia e na África \cite{buildings13071758}.
 
-	As ontologias são definições formais de instâncias de objetos, grupos de objetos, e as relações entre estes dentro de um domínio. São representadas usando \textit{Web Ontology Language} (OWL) e \textit{Resource Description Framework} (RDF), e, diferente de esquemas de bancos de dados, descrevem o mundo real, não a maneira como a informação é armazenada \cite{metral_ontologybased_2010}. O uso de ontologias dentro de um mesmo contexto (e.g., cidade ou campus universitário) pode enfrentar desafios semânticos quando temos fontes de dados heterogêneas, como BIM, GIS, sensores de IoT, etc. Então, sob esse olhar, a abordagem de \citeonline{metral_ontologybased_2010} mostra-se ainda mais conveniente, dada a possibilidade de integrar estruturas de dados diversas, definindo relações de compatibilidade semântica entre uma ontologia específica e outra \cite{SHI2023102114}.
+O CityGML representa um grande passo na padronização da troca de informação entre sistemas de GDUs.
+Todavia, segundo \citeonline[p.~103, tradução nossa]{metral_ontologybased_2010}, "[.
+  ..] desenvolver um modelo urbano universal único é impossível; a percepção da realidade urbana é diversa e múltipla".
+Por isso, propõe o uso de ontologias formais como ponte semântica entre diferentes modelos urbanos,
+enquanto mantém o CityGML como modelo genérico para conceitos centrais compartilhados por
+diferentes representações especializadas de dados urbanos.
 
-	Por fim, a ontologia \textit{Sensor, Observation, Sample, and Actuator/Semantic Sensor Network} (SOSA/SSN), proposta para sistemas de IoT, complementa o CityGML na camada de sensores. Oriunda do trabalho em conjunto do OGC com o \textit{World Wide Web Consortium} (W3C), a primeira, SOSA, define os conceitos de sensor, observação, amostragem e atuador, enquanto a SSN a estende, incluindo também instruções de procedimentos, propriedades observadas e sistemas de sensores \cite{haller2019}; Isso permite que dispositivos distintos, como uma câmera de segurança e um detector de presença, observando um evento físico com dialetos diferentes, cheguem à mesma conclusão (e.g. "há uma pessoa no pátio"). Assim, CityGML, SOSA/SSN e OWL/RDF formam os pilares semânticos para a modelagem do campus Higienópolis do Instituto Presbiteriano Mackenzie, objeto central deste trabalho.
+As ontologias são definições formais de instâncias de objetos, grupos de objetos, e as relações
+entre estes dentro de um domínio.
+São representadas usando \textit{Web Ontology Language} (OWL) e \textit{Resource Description
+  Framework} (RDF), e, diferente de esquemas de bancos de dados, descrevem o mundo real, não a
+maneira como a informação é armazenada \cite{metral_ontologybased_2010}.
+O uso de ontologias dentro de um mesmo contexto (e.g., cidade ou campus universitário) pode
+enfrentar desafios semânticos quando temos fontes de dados heterogêneas, como BIM, GIS, sensores de
+IoT, etc. Então, sob esse olhar, a abordagem de \citeonline{metral_ontologybased_2010} mostra-se
+ainda mais conveniente, dada a possibilidade de integrar estruturas de dados diversas, definindo
+relações de compatibilidade semântica entre uma ontologia específica e outra \cite{SHI2023102114}.
 
-	\section{Metodologia}
+Por fim, a ontologia \textit{Sensor, Observation, Sample, and Actuator/Semantic Sensor Network}
+(SOSA/SSN), proposta para sistemas de IoT, complementa o CityGML na camada de sensores.
+Oriunda do trabalho em conjunto do OGC com o \textit{World Wide Web Consortium} (W3C), a primeira,
+SOSA, define os conceitos de sensor, observação, amostragem e atuador, enquanto a SSN a estende,
+incluindo também instruções de procedimentos, propriedades observadas e sistemas de sensores
+\cite{haller2019}; Isso permite que dispositivos distintos, como uma câmera de segurança e um
+detector de presença, observando um evento físico com dialetos diferentes, cheguem à mesma
+conclusão (e.g. "há uma pessoa no pátio").
+Assim, CityGML, SOSA/SSN e OWL/RDF formam os pilares semânticos para a modelagem do campus
+Higienópolis do Instituto Presbiteriano Mackenzie, objeto central deste trabalho.
 
-	Este trabalho é, quanto ao tipo, uma pesquisa aplicada, visto que busca gerar insumos para resolver uma dificuldade real: a falta de homogeneidade nas aplicações de GDU. Quanto à abordagem, é formal, porque o objeto central de estudo é a modelagem formal de uma ontologia aplicada ao contexto do campus da UPM. Em relação aos objetivos, é de natureza exploratória, pois a aplicação de ontologias OWL como camada semântica integradora em contextos de campus universitário, como instância de GDU, ainda é incipiente na literatura. Por fim, quanto ao procedimento técnico, adota-se o \textit{Design Science Research} (DSR).
+\section{Metodologia}
 
-	O DSR é adotado devido ao foco em criar e avaliar um artefato para resolver um problema complexo e/ou prático, ao passo que contribui com novos conhecimentos \cite{hevner_2004}. Com isso, este trabalho deve gerar um artefato de modelo, que é a ontologia para representar formalmente as entidades presentes no campus, de maneira alinhada aos padrões CityGML e SOSA/SSN. Portanto, o conhecimento científico emerge do processo de construção, refinamento e validação do próprio artefato frente à problemática envolvida.
+Este trabalho é, quanto ao tipo, uma pesquisa aplicada, visto que busca gerar insumos para resolver
+uma dificuldade real: a falta de homogeneidade nas aplicações de GDU.
+Quanto à abordagem, é formal, porque o objeto central de estudo é a modelagem formal de uma
+ontologia aplicada ao contexto do campus da UPM.
+Em relação aos objetivos, é de natureza exploratória, pois a aplicação de ontologias OWL como
+camada semântica integradora em contextos de campus universitário, como instância de GDU, ainda é
+incipiente na literatura.
+Por fim, quanto ao procedimento técnico, adota-se o \textit{Design Science Research} (DSR).
 
-	A avaliação do artefato produzido terá como critério permitir uma maneira de navegar nas ontologias estudadas, e, usando de motores como o \textit{SPARQL Protocol and RDF Query Language} (SPARQL), responder consultas semânticas simples, como: "quais prédios estão paralelos à Rua da Consolação?"; "quais espécies de árvores estão presentes no Bosque das Fadas?"; ou, ainda, "quais sensores observam a entrada do prédio 31?".
+O DSR é adotado devido ao foco em criar e avaliar um artefato para resolver um problema complexo
+e/ou prático, ao passo que contribui com novos conhecimentos \cite{hevner_2004}.
+Com isso, este trabalho deve gerar um artefato de modelo, que é a ontologia para representar
+formalmente as entidades presentes no campus, de maneira alinhada aos padrões CityGML e SOSA/SSN.
+Portanto, o conhecimento científico emerge do processo de construção, refinamento e validação do
+próprio artefato frente à problemática envolvida.
 
-    \section{Cronograma de Atividades}
+A avaliação do artefato produzido terá como critério permitir uma maneira de navegar nas ontologias
+estudadas, e, usando de motores como o \textit{SPARQL Protocol and RDF Query Language} (SPARQL),
+responder consultas semânticas simples, como: "quais prédios estão paralelos à Rua da Consolação?
+"; "quais espécies de árvores estão presentes no Bosque das Fadas?"; ou, ainda, "quais sensores observam a entrada do prédio 31?".
 
-    \begin{table}[htbp]
-        \centering
-        \begin{tabular}{l|c|c|c|c|c}
-            Atividade & Ago. & Set. & Out. & Nov. & Dez. \\
-            \hline
-            Levantamento Físico do Campus & X & & & & \\
-            Mapeamento de Entidades Principais & X & X & & & \\
-            \textit{Reasoner} e SPARQL & & X & & & \\
-            Implementação da Arquitetura & & X & X & X & \\
-            Resultados e Discussão & & & & X & X \\
-            Conclusão e Revisão & & & & & X \\
-        \end{tabular}
-        \caption{Cronograma de atividades a serem desenvolvidas.}
-        \label{tab:bullets}
-    \end{table}
+\section{Cronograma de Atividades}
 
-	% \section{Resultados e Discussão}
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{l|c|c|c|c|c}
+    Atividade                          & Ago.
+                                       & Set. & Out. & Nov. & Dez.     \\
+    \hline
+    Levantamento Físico do Campus      & X    &      &      &      &   \\
+    Mapeamento de Entidades Principais & X    & X    &      &      &   \\
+    \textit{Reasoner} e SPARQL         &      & X    &      &      &   \\
+    Implementação da Arquitetura       &      & X    & X    & X    &   \\
+    Resultados e Discussão             &      &      &      & X    & X \\
+    Conclusão e Revisão                &      &      &      &      & X \\
+  \end{tabular}
+  \caption{Cronograma de atividades a serem desenvolvidas.}
+  \label{tab:bullets}
+\end{table}
 
-	% Resultados e discussão ainda a serem esquematizados e apresentados mediante a implementação feita na fase de TCC II.
+% \section{Resultados e Discussão}
 
-	% \section{Conclusão}
+% Resultados e discussão ainda a serem esquematizados e apresentados mediante a implementação feita na fase de TCC II.
 
-	% Conclusão mediante a implementação feita na fase de TCC II.
+% \section{Conclusão}
 
-	% \section{Referências bibliográficas}
-    % trabalhos não referenciados explicitamente no texto, mas consultados
-    % \nocite{SHI2023102114}
+% Conclusão mediante a implementação feita na fase de TCC II.
 
-	% ----------------------------------------------------------
-	% ELEMENTOS PÓS-TEXTUAIS
-	% ----------------------------------------------------------
-	\postextual
+% \section{Referências bibliográficas}
+% trabalhos não referenciados explicitamente no texto, mas consultados
+% \nocite{SHI2023102114}
 
-	% ----------------------------------------------------------
-	% Referências bibliográficas
-	% ----------------------------------------------------------
-	\bibliography{referencias}
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
 
-	% ----------------------------------------------------------
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{referencias}
+
+% ----------------------------------------------------------
 \end{document}
