@@ -1,18 +1,18 @@
 \documentclass[
-	% -- opções da classe memoir --
-	article, % indica que é um artigo acadêmico
-	11pt, % tamanho da fonte
-	oneside, % para impressão apenas no recto. Oposto a twoside
-	a4paper, % tamanho do papel.
-	% -- opções da classe abntex2 --
-	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
-	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
-	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
-	%subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
-	% -- opções do pacote babel --
-	english, % idioma adicional para hifenização
-	brazil, % o último idioma é o principal do documento
-	sumario=tradicional
+  % -- opções da classe memoir --
+  article,   % indica que é um artigo acadêmico
+  11pt,      % tamanho da fonte
+  oneside,   % para impressão apenas no recto. Oposto a twoside
+  a4paper,   % tamanho do papel.
+  % -- opções da classe abntex2 --
+  %chapter=TITLE,        % títulos de capítulos convertidos em letras maiúsculas
+  %section=TITLE,        % títulos de seções convertidos em letras maiúsculas
+  %subsection=TITLE,     % títulos de subseções convertidos em letras maiúsculas
+  %subsubsection=TITLE   % títulos de subsubseções convertidos em letras maiúsculas
+  % -- opções do pacote babel --
+  english,   % idioma adicional para hifenização
+  brazil,    % o último idioma é o principal do documento
+  sumario=tradicional
 ]{abntex2}
 
 % ---
@@ -22,15 +22,18 @@
 % ---
 % Pacotes fundamentais
 % ---
-\usepackage{lmodern}			% Usa a fonte Latin Modern
-\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
-\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
-\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
-\usepackage{nomencl} 			% Lista de simbolos
-\usepackage{color}				% Controle das cores
-\usepackage{graphicx}			% Inclusão de gráficos
-\usepackage{microtype} 			% Para melhorias de justificação
-\usepackage{hyperref}           % Habilita links e referências
+\usepackage{lmodern}          % Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}      % Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}   % Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}      % Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl}          % Lista de simbolos
+\usepackage{color}            % Controle das cores
+\usepackage{graphicx}         % Inclusão de gráficos
+\usepackage{microtype}        % Para melhorias de justificação
+\usepackage{hyperref}         % Habilita links e referências
+
+% Termo em inglês: itálico + inglês
+\newcommand{\en}[1]{\foreignlanguage{english}{\textit{#1}}}
 
 % --- Header e Footer ---
 
@@ -39,7 +42,7 @@
 
 \makepagestyle{meuestilo}
 \makeevenhead{meuestilo}{\includegraphics[height=1.1cm]{FCI.png}}{}{\thepage}
-\makeoddhead {meuestilo}{\includegraphics[height=1.1cm]{FCI.png}}{}{\thepage}
+\makeoddhead{meuestilo}{\includegraphics[height=1.1cm]{FCI.png}}{}{\thepage}
 \makeheadrule{meuestilo}{\textwidth}{0.4pt}
 
 \pagestyle{meuestilo}
@@ -49,8 +52,8 @@
 
 % Pacotes de citações
 % ---
-%\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
-\usepackage[alf]{abntex2cite} % Citações padrão ABNT
+%\usepackage[brazilian,hyperpageref]{backref}   % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}   % Citações padrão ABNT
 % ---
 
 % ---
@@ -61,13 +64,13 @@
 %\renewcommand{\backref}{}
 % Define os textos da citação
 %\renewcommand*{\backrefalt}[4]{
-%	\ifcase #1 %
-%		Nenhuma citação no texto.%
-%	\or
-%		Citado na página #2.%
-%	\else
-%		Citado #1 vezes nas páginas #2.%
-%	\fi}%
+%  \ifcase #1 %
+%    Nenhuma citação no texto.%
+%  \or
+%    Citado na página #2.%
+%  \else
+%    Citado #1 vezes nas páginas #2.%
+%  \fi}%
 % ---
 
 % --- Informações de dados para CAPA e FOLHA DE ROSTO ---
@@ -75,16 +78,16 @@
 \titulo{Implementação de Ontologia para Gêmeos Digitais Urbanos}
 \def \theforeigntitle{}
 
-\autor{Daniel Yoshio Omiya \textsuperscript{1}
-\and Gabriel Mason Guerino \textsuperscript{1}
-\and Pedro Bacic Branco \textsuperscript{1}
-\and Prof. Dr. Fabio Silva Lopes \textsuperscript{1,2} \\
-\\
-\textsuperscript{1}Faculdade de Computação e Informática (FCI) \\ Universidade Presbiteriana Mackenzie São Paulo, SP – Brasil \\
-\\ \textsuperscript{2}Programa de Pós-Graduação em Computação Aplicada \\ Universidade Presbiteriana Mackenzie São Paulo, SP – Brasil \\
-\\
-\url{{10356170,10409928,10382476}@mackenzista.com.br}
-\\
+\autor{Daniel Yoshio Omiya\textsuperscript{1}
+  \and Gabriel Mason Guerino\textsuperscript{1}
+  \and Pedro Bacic Branco\textsuperscript{1}
+  \and Prof. Dr. Fabio Silva Lopes\textsuperscript{1,2} \\
+  \\
+  \textsuperscript{1}Faculdade de Computação e Informática (FCI) \\ Universidade Presbiteriana Mackenzie São Paulo–SP – Brasil \\
+  \\ \textsuperscript{2}Programa de Pós-Graduação em Computação Aplicada \\ Universidade Presbiteriana Mackenzie São Paulo–SP – Brasil \\
+  \\
+  \url{{10356170,10409928,10382476}@mackenzista.com.br}
+  \\
 \url{fabio.lopes@mackenzie.br}}
 
 \data{2026}
@@ -100,18 +103,18 @@
 \makeatletter
 \let\@fnsymbol\@arabic
 \hypersetup{
-     	%pagebackref=true,
-		%pdftitle={\@title}, 
-		%pdfauthor={\@author},
-    	%pdfsubject={Modelo de artigo científico com abnTeX2},
-	    %pdfcreator={LaTeX with abnTeX2},
-		%pdfkeywords={abnt}{latex}{abntex}{abntex2}{atigo científico}, 
-		colorlinks=true,       		% false: boxed links; true: colored links
-    	linkcolor=blue,          	% color of internal links
-    	citecolor=blue,        		% color of links to bibliography
-    	%filecolor=magenta,         % color of file links
-		urlcolor=blue,
-		%bookmarksdepth=4
+  %pagebackref=true,
+  %pdftitle={\@title},
+  %pdfauthor={\@author},
+  %pdfsubject={Modelo de artigo científico com abnTeX2},
+  %pdfcreator={LaTeX with abnTeX2},
+  %pdfkeywords={abnt}{latex}{abntex}{abntex2}{atigo científico},
+  colorlinks=true,      % false: boxed links; true: colored links
+  linkcolor=blue,       % color of internal links
+  citecolor=blue,       % color of links to bibliography
+  %filecolor=magenta,   % color of file links
+  urlcolor=blue,
+  %bookmarksdepth=4
 }
 \makeatother
 % ---
@@ -138,7 +141,7 @@
 \setlength{\parindent}{1.3cm}
 
 % Controle do espaçamento entre um parágrafo e outro:
-\setlength{\parskip}{0.2cm} % tente também \onelineskip
+\setlength{\parskip}{0.2cm}   % tente também \onelineskip
 
 % Espaçamento simples
 \SingleSpacing
@@ -157,7 +160,7 @@
 %
 % Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
 % e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
-% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+% \twocolumn[        % INICIO DE ARTIGO EM DUAS COLUNAS
 %
 %---
 
@@ -172,8 +175,9 @@
     Este trabalho propõe a modelagem e implementação de uma ontologia de domínio, alinhada aos padrões
     CityGML e SOSA/SSN, para representar entidades físicas, sensores e relações espaciais no contexto
     de um campus universitário (tomado como instância controlada de GDU).
-    A pesquisa adota a metodologia Design Science Research (DSR), compreendendo a revisão dos padrões
-    de referência, a modelagem da ontologia, a definição de um mecanismo de exposição, e a validação.
+    A pesquisa adota a metodologia \en{Design Science Research} (DSR), compreendendo a revisão dos
+    padrões de referência, a modelagem da ontologia, a definição de um mecanismo de exposição, e a
+    validação.
     Os resultados esperados incluem uma ontologia funcional capaz de responder a perguntas semânticas
     do campus, promovendo interoperabilidade semântica entre fontes de dados diversas na plataforma GDU
     do campus Higienópolis da Universidade Presbiteriana Mackenzie.
@@ -198,7 +202,7 @@
       reference standards, ontology modeling, the definition of an exposure mechanism, and validation.
       The expected results include a functional ontology capable of answering semantic queries about the
       campus, promoting semantic interoperability among diverse data sources within the UDT platform of
-      Universidade Presbiteriana Mackenzie.
+      Mackenzie Presbyterian University.
     }
 
     \vspace{\onelineskip}
@@ -208,7 +212,7 @@
   \end{otherlanguage*}
 \end{resumoumacoluna}
 
-% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
+% ]          % FIM DE ARTIGO EM DUAS COLUNAS
 % ---
 
 % ----------------------------------------------------------
@@ -221,17 +225,18 @@
 % ----------------------------------------------------------
 \section{Introdução}
 
-De acordo com o relatório de Perspectiva de Urbanização Mundial da \citeonline{undesa2025wup}, as
-cidades são o lar de mais de 45\% da população mundial, dobro da proporção de 1950, e projetado
-para chegar a dois terços até 2050.
+Segundo o relatório de Perspectiva de Urbanização Mundial da \citeonline{undesa2025wup}, as cidades
+são o lar de mais de 45\% da população mundial, dobro da proporção de 1950, e projetado para chegar
+a dois terços até 2050.
 Esse fenômeno de crescimento acelerado das cidades eleva grandemente a complexidade de prover
 infraestrutura de transporte, energia, saneamento, e governança; torna ineficiente e insuficiente
 os modelos tradicionais de gestão urbana, muitas vezes com dados fragmentados em diversos sistemas
 heterogêneos.
-Nesse cenário, surgem as \textit{Smart Cities} (Cidades Inteligentes), dotadas do uso de Internet
-das Coisas (IoT), de Inteligência Artificial (IA), e da análise de grandes quantidades de dados
-(Big Data), que representaram um salto no planejamento urbano, melhorando a qualidade de vida, a
-eficiência da operação e dos serviços urbanos, e a tomada de decisão pública \cite{WEIL2023104862}.
+Nesse cenário, surgem as \en{Smart Cities} (Cidades Inteligentes), dotadas do uso de Internet das
+Coisas (IoT), de Inteligência Artificial (IA), e da análise de quantidades massivas de dados
+(\en{Big Data}), que representaram um salto no planejamento urbano, melhorando a qualidade de vida,
+a eficiência da operação e dos serviços urbanos, e a tomada de decisão pública
+\cite{WEIL2023104862}.
 
 Nesse contexto, os Gêmeos Digitais Urbanos (GDU) despontam como uma tecnologia para evoluir ainda
 mais a gestão e o planejamento urbano.
@@ -239,8 +244,8 @@ Sendo o Gêmeo Digital definido como uma representação virtual de um objeto da
 constantemente num fluxo de dados bidirecional entre os mundos físico e digital.
 Quando aplicado à escala urbana, torna-se uma plataforma capaz de monitorar, analisar e prever
 sistemas complexos em tempo real.
-Casos como o projeto \textit{Virtual Singapore} e a iniciativa Helsinki 3D+ demonstram o poder
-deste tipo de integração, sendo usados até mesmo para resposta a emergências
+Casos como o projeto \en{Virtual Singapore} e a iniciativa Helsinki 3D+ demonstram o poder deste
+tipo de integração, sendo usados até mesmo para resposta a emergências
 \cite{FERREBIGORRA2022103905, WEIL2023104862}.
 
 Embora seja uma tecnologia com um grande potencial, ela enfrenta uma série de desafios na sua
@@ -249,7 +254,7 @@ diferente cada, como: sensores de IoT, modelos de informação de edificações,
 padrões como CityGML, imagens de câmeras, drones e estações meteorológicas, entre outros.
 Por exemplo, um sensor de IoT pode registrar a temperatura como um valor inteiro em graus Célsius,
 enquanto a estação meteorológica poderia usar Fahrenheit.
-Essa dificuldade de interoperabilidade é chamada de \textit{semantic gap} (lacuna semântica), como
+Essa dificuldade de interoperabilidade é chamada de \en{semantic gap} (lacuna semântica), como
 apontado por \citeonline{WEIL2023104862}.
 
 Superar essa dificuldade requer revisar o conhecimento em comum, atribuindo um significado formal e
@@ -262,7 +267,7 @@ vocabulário comum e de regras de inferência lógica.
 O presente trabalho tem como objeto de estudo a aplicação dessas tecnologias no contexto do campus
 Higienópolis da Universidade Presbiteriana Mackenzie (UPM), adotando como instância representativa
 um GDU em escala reduzida.
-A pesquisa é conduzida sob o paradigma da \textit{Design Science Research} (DSR), que orienta o
+A pesquisa é conduzida sob o paradigma da \en{Design Science Research} (DSR), que orienta o
 processo de construção e avaliação de artefatos computacionais como resposta a problemas práticos
 relevantes \cite{hevner_2004}, sendo a ontologia de domínio proposta o artefato central a ser
 desenvolvido, avaliado e documentado.
@@ -274,18 +279,18 @@ validação por casos de uso; e o Capítulo 6 traz as considerações finais.
 
 \section{Referencial Teórico}
 
-O Gêmeo Digital é um conceito introduzido por Michael Grieves em 2003, quando "apresentou a versão
-digital de um produto físico" \apud[p.~7]{Opoku_2021}{Gomes_2025}, e trata-se desta representação
-virtual de um objeto real que é atualizada continuamente através da integração entre os sistemas
-físico e digital \cite{DIHAN2024e26503}.
+O Gêmeo Digital é um conceito introduzido por Michael Grieves em 2003, quando ``apresentou a versão
+digital de um produto físico'' \apud[p.~7]{Opoku_2021}{Gomes_2025}, e trata-se desta representação
+virtual de um objeto real atualizada continuamente através da integração entre os sistemas físico e
+digital \cite{DIHAN2024e26503}.
 Gêmeos Digitais aplicados à gestão urbana começaram a surgir por volta de 2018, potencializados
-pelo conceito das \textit{smart cities}, onde cidadãos e a administração pública cooperam em prol
-de tornar a cidade mais eficiente, inteligente, sustentável, segura, inclusiva e democrática.
+pelo conceito das \en{smart cities}, onde cidadãos e a administração pública cooperam em prol de
+tornar a cidade mais eficiente, inteligente, sustentável, segura, inclusiva e democrática.
 
 Os Gêmeos Digitais Urbanos (GDU) são relativamente recentes; porém, vale destacar que não são a
 primeira tecnologia aplicada à geografia urbana, que, na década de 2000, já contava com o
-\textit{Building Information Modeling} (BIM) e o \textit{Geographic Information System} (GIS), os
-quais são modelagens 3D das edificações e do espaço externo.
+\en{Building Information Modeling} (BIM) e o \en{Geographic Information System} (GIS), os quais são
+modelagens 3D das edificações e do espaço externo.
 A diferença fundamental entre estes e o GDU reside no fluxo de dados: enquanto o BIM e o GIS são
 modelos estáticos, o Gêmeo Digital é dinâmico e projetado para atuar com tecnologias de IoT,
 refletindo assim sempre informações do mundo real, como temperatura, ruído sonoro, ocupação, etc.
@@ -293,42 +298,45 @@ refletindo assim sempre informações do mundo real, como temperatura, ruído so
 Contudo, ainda há um problema latente de falta de padronização e de interoperabilidade na
 implementação dos GDUs, visto que poucos deles conseguem compartilhar dados com outros GDUs ou
 organizações \cite{FERREBIGORRA2022103905}.
-Dessa demanda, em 2008, foi desenvolvido pelo \textit{Open Geospatial Consortium} (OGC) o
-\textit{City Geography Markup Language} (CityGML), um padrão internacional para representar e
-trocar dados de modelos 3D de cidades.
+Dessa demanda, em 2008, foi desenvolvido pelo \en{Open Geospatial Consortium} (OGC) o \en{City
+  Geography Markup Language} (CityGML), um padrão internacional para representar e trocar dados de
+modelos 3D de cidades.
 Este já é usado em regiões da Europa, sendo que todas as capitais europeias disponibilizam modelos
 CityGML, bem como alguns países na Ásia e na África \cite{buildings13071758}.
 
 O CityGML representa um grande passo na padronização da troca de informação entre sistemas de GDUs.
-Todavia, segundo \citeonline[p.~103, tradução nossa]{metral_ontologybased_2010}, "[.
-  ..] desenvolver um modelo urbano universal único é impossível; a percepção da realidade urbana é diversa e múltipla".
+Todavia, segundo \citeonline[p.~103, tradução nossa]{metral_ontologybased_2010}, ``[...]
+desenvolver um modelo urbano universal único é impossível; a percepção da realidade urbana é
+diversa e múltipla''.
 Por isso, propõe o uso de ontologias formais como ponte semântica entre diferentes modelos urbanos,
 enquanto mantém o CityGML como modelo genérico para conceitos centrais compartilhados por
 diferentes representações especializadas de dados urbanos.
 
 As ontologias são definições formais de instâncias de objetos, grupos de objetos, e as relações
-entre estes dentro de um domínio.
-São representadas usando \textit{Web Ontology Language} (OWL) e \textit{Resource Description
-  Framework} (RDF), e, diferente de esquemas de bancos de dados, descrevem o mundo real, não a
-maneira como a informação é armazenada \cite{metral_ontologybased_2010}.
-O uso de ontologias dentro de um mesmo contexto (e.g., cidade ou campus universitário) pode
-enfrentar desafios semânticos quando temos fontes de dados heterogêneas, como BIM, GIS, sensores de
-IoT, etc. Então, sob esse olhar, a abordagem de \citeonline{metral_ontologybased_2010} mostra-se
-ainda mais conveniente, dada a possibilidade de integrar estruturas de dados diversas, definindo
-relações de compatibilidade semântica entre uma ontologia específica e outra \cite{SHI2023102114}.
+entre estes num domínio.
+São representadas usando \en{Web Ontology Language} (OWL) e \en{Resource Description Framework}
+(RDF), e, diferente de esquemas de bancos de dados, descrevem o mundo real, não a maneira como a
+informação é armazenada \cite{metral_ontologybased_2010}.
+O uso de ontologias num mesmo contexto (e.g., cidade ou campus universitário) pode enfrentar
+desafios semânticos quando temos fontes de dados heterogêneas, como BIM, GIS, sensores de IoT, etc.
+Então, sob esse olhar, a abordagem de \citeonline{metral_ontologybased_2010} mostra-se ainda mais
+conveniente, dada a possibilidade de integrar estruturas de dados diversas, definindo relações de
+compatibilidade semântica entre uma ontologia específica e outra \cite{SHI2023102114}.
 
-Por fim, a ontologia \textit{Sensor, Observation, Sample, and Actuator/Semantic Sensor Network}
+Por fim, a ontologia \en{Sensor, Observation, Sample, and Actuator/Semantic Sensor Network}
 (SOSA/SSN), proposta para sistemas de IoT, complementa o CityGML na camada de sensores.
-Oriunda do trabalho em conjunto do OGC com o \textit{World Wide Web Consortium} (W3C), a primeira,
+Oriunda do trabalho em conjunto do OGC com o \en{World Wide Web Consortium} (W3C), a primeira,
 SOSA, define os conceitos de sensor, observação, amostragem e atuador, enquanto a SSN a estende,
 incluindo também instruções de procedimentos, propriedades observadas e sistemas de sensores
-\cite{haller2019}; Isso permite que dispositivos distintos, como uma câmera de segurança e um
+\cite{haller2019}; isso permite que dispositivos distintos, como uma câmera de segurança e um
 detector de presença, observando um evento físico com dialetos diferentes, cheguem à mesma
-conclusão (e.g. "há uma pessoa no pátio").
+conclusão (e.g., ``há uma pessoa no pátio'').
 Assim, CityGML, SOSA/SSN e OWL/RDF formam os pilares semânticos para a modelagem do campus
 Higienópolis do Instituto Presbiteriano Mackenzie, objeto central deste trabalho.
 
 \section{Metodologia}
+
+\subsection{Design Science Research}
 
 Este trabalho é, quanto ao tipo, uma pesquisa aplicada, visto que busca gerar insumos para resolver
 uma dificuldade real: a falta de homogeneidade nas aplicações de GDU.
@@ -337,46 +345,63 @@ ontologia aplicada ao contexto do campus da UPM.
 Em relação aos objetivos, é de natureza exploratória, pois a aplicação de ontologias OWL como
 camada semântica integradora em contextos de campus universitário, como instância de GDU, ainda é
 incipiente na literatura.
-Por fim, quanto ao procedimento técnico, adota-se o \textit{Design Science Research} (DSR).
+Por fim, quanto ao procedimento técnico, adota-se o \en{Design Science Research} (DSR).
 
 O DSR é adotado devido ao foco em criar e avaliar um artefato para resolver um problema complexo
 e/ou prático, ao passo que contribui com novos conhecimentos \cite{hevner_2004}.
-Com isso, este trabalho deve gerar um artefato de modelo, que é a ontologia para representar
+Com isso, este trabalho deve gerar um artefato de modelo, o qual é a ontologia para representar
 formalmente as entidades presentes no campus, de maneira alinhada aos padrões CityGML e SOSA/SSN.
 Portanto, o conhecimento científico emerge do processo de construção, refinamento e validação do
 próprio artefato frente à problemática envolvida.
 
 A avaliação do artefato produzido terá como critério permitir uma maneira de navegar nas ontologias
-estudadas, e, usando de motores como o \textit{SPARQL Protocol and RDF Query Language} (SPARQL),
-responder consultas semânticas simples, como: "quais prédios estão paralelos à Rua da Consolação?
-"; "quais espécies de árvores estão presentes no Bosque das Fadas?"; ou, ainda, "quais sensores observam a entrada do prédio 31?".
+estudadas, e, usando de motores como o \en{SPARQL Protocol and RDF Query Language} (SPARQL),
+responder consultas semânticas simples, como: ``quais prédios estão paralelos à Rua da
+Consolação?''; ``quais espécies de árvores estão presentes no Bosque da FAU?''; ou, ainda, ``quais
+sensores observam a entrada do prédio 31?''.
 
-\section{Cronograma de Atividades}
+\subsection{Procedimentos}
 
-\begin{table}[htbp]
-  \centering
-  \begin{tabular}{l|c|c|c|c|c}
-    Atividade                          & Ago.
-                                       & Set. & Out. & Nov. & Dez.     \\
-    \hline
-    Levantamento Físico do Campus      & X    &      &      &      &   \\
-    Mapeamento de Entidades Principais & X    & X    &      &      &   \\
-    \textit{Reasoner} e SPARQL         &      & X    &      &      &   \\
-    Implementação da Arquitetura       &      & X    & X    & X    &   \\
-    Resultados e Discussão             &      &      &      & X    & X \\
-    Conclusão e Revisão                &      &      &      &      & X \\
-  \end{tabular}
-  \caption{Cronograma de atividades a serem desenvolvidas.}
-  \label{tab:bullets}
-\end{table}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Mauris ac augue auctor, ullamcorper neque a, faucibus mauris.
+Vestibulum malesuada urna id enim fermentum pretium.
+Sed rutrum, mauris vel porta malesuada, nunc felis malesuada mi, quis dapibus magna velit nec
+felis.
+Morbi rhoncus, leo interdum posuere tempus, elit tortor commodo ipsum, ac ultrices arcu nulla ac
+neque.
+Nunc sit amet fermentum odio, ut vestibulum odio.
+Phasellus lobortis lectus eu pellentesque aliquam.
+Pellentesque quis risus ut arcu pharetra varius vitae in tortor.
+Proin eget egestas diam, sed dapibus erat.
+Quisque et nisl vitae tortor volutpat facilisis.
 
-% \section{Resultados e Discussão}
+\subsection{Estratégia de Validação}
 
-% Resultados e discussão ainda a serem esquematizados e apresentados mediante a implementação feita na fase de TCC II.
+Donec viverra massa sed lectus tristique, vitae imperdiet mauris ullamcorper.
+Aenean facilisis bibendum est, non sollicitudin diam maximus at.
+Fusce vel nulla urna.
+Nulla at laoreet tellus.
+Praesent venenatis mauris quis porta tincidunt.
+Suspendisse pharetra nisl a lectus ultricies rhoncus.
+Pellentesque lobortis mattis sem.
+Integer ante elit, porta tempus tincidunt vel, ornare vel lorem.
+Integer facilisis id leo pellentesque luctus.
+Fusce vel metus purus.
+Aliquam erat volutpat.
+Morbi id egestas diam, et laoreet arcu.
+Proin mollis libero eu vehicula ultricies.
+Integer consectetur pulvinar faucibus.
+Donec mollis, felis at dignissim faucibus, nisi tortor laoreet nisi, et dapibus dui quam lacinia
+felis.
 
-% \section{Conclusão}
+\section{Resultados e Discussão}
 
-% Conclusão mediante a implementação feita na fase de TCC II.
+Resultados e discussão ainda a serem esquematizados e apresentados mediante a implementação feita
+na fase de TCC II.
+
+\section{Conclusão}
+
+Conclusão mediante a implementação feita na fase de TCC II.
 
 % \section{Referências bibliográficas}
 % trabalhos não referenciados explicitamente no texto, mas consultados
