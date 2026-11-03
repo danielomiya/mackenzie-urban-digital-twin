@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Install TeX Live packages now and record them so they are baked in on rebuild.
+#   texpkg <package>...         install + record in tex-packages.txt
+#   texpkg which <file.sty>     show which package provides a file
+set -euo pipefail
+
+if [ "${1:-}" = "which" ]; then
+  [ -n "${2:-}" ] || { echo "usage: texpkg which <file>" >&2; exit 1; }
+  exec tlmgr search --global --file "/$2"
+fi
+
+[ $# -gt 0 ] || { echo "usage: texpkg <package>... | texpkg which <file>" >&2; exit 1; }
+list="${TEX_PACKAGES_FILE:?TEX_PACKAGES_FILE is not set}"
+
+tlmgr install "$@"
+
+touch "$list"
+# Make sure the file ends with a newline before appending
+if [ -s "$list" ] && [ -n "$(tail -c1 "$list")" ]; then echo >> "$list"; fi
+for p in "$@"; do
+  # Match the package name ignoring trailing comments/whitespace
+  sed 's/#.*//; s/[[:space:]]*$//; s/^[[:space:]]*//' "$list" | grep -qxF "$p" \
+    || echo "$p" >> "$list"
+done
+echo "Recorded in $list"

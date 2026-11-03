@@ -1,0 +1,35 @@
+---
+defaultIndent: "  "
+
+removeTrailingWhitespace:
+  beforeProcessing: 1
+  afterProcessing: 1
+
+onlyOneBackUp: 1
+
+modifyLineBreaks:
+  oneSentencePerLine:
+    manipulateSentences: 1  # each sentence starts on its own line
+    removeSentenceLineBreaks: 1  # re-join a sentence before re-breaking it (same input -> same output)
+    textWrapSentences: 1  # ...and wrap long sentences at textWrapOptions:columns
+    sentencesEndWith:
+      betterFullStop: 0  # replaced by the stricter rule in fineTuning below
+      exclamationMark: 0  # replaced by 'other' below
+      questionMark: 0  # replaced by 'other' below
+      # A ? or ! ends a sentence, unless a closing quote follows (``...?''),
+      # in which case the sentence continues to the full stop after the quote.
+      other: |-
+        (?x)
+        (?: [?!] (?! \h* '' ) )
+        |
+        (?: \.\) (?! \h* [a-z] ) )
+        |
+        (?:
+          (?<! [.\[] )
+          (?<! (?:[eE]\.[gG]) | (?:[iI]\.[eE]) | (?:etc) | (?:[wW]\.[rR]\.[tT]) )
+          (?<! \b(?: Prof | Profa | Dr | Dra | Sr | Sra | cf | Cf | al | Fig | fig | Tab | tab | Eq | eq | Cap | cap | Vol | vol | ed | pp | p | v | n ) )
+          \.
+          (?! [.\]a-zA-Z0-9~,\-] | \), | \)\. )
+        )
+  textWrapOptions:
+    columns: 100
