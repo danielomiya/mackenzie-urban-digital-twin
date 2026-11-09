@@ -1,0 +1,32 @@
+# TeX Live packages installed on top of scheme-basic when the image is built.
+# One per line; '#' starts a comment. `texpkg <name>` appends here automatically.
+# Find which package provides a file:  texpkg which foo.sty
+#
+# This list is exactly what the abnTeX2 article template (abntex2-modelo-artigo.tex)
+# reads beyond scheme-basic, worked out by compiling it and tracing every file.
+
+latexmk
+latexindent
+
+# abnTeX2 class, abntex2cite and the abntex2-*.bst BibTeX styles
+abntex2
+memoir          # abntex2 is built on memoir
+enumitem        # loaded by abntex2
+textcase        # loaded by abntex2
+setspace
+xpatch
+etoolbox        # needed by xpatch
+xkeyval
+booktabs
+relsize
+
+# Brazilian Portuguese: babel (brazil.ldf) and hyphenation patterns
+babel-portuges
+hyphen-portuguese
+
+# Packages the template loads explicitly
+lm              # \usepackage{lmodern}
+microtype
+nomencl
+koma-script     # tocbasic, loaded by nomencl
+lipsum          # dummy text only; drop it (and its \usepackage) in your own article
