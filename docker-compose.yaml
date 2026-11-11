@@ -1,0 +1,56 @@
+---
+name: citydb
+
+services:
+  3dcitydb:
+    container_name: 3dcitydb
+    image: 3dcitydb/3dcitydb-pg:18-3.6-5.1-alpine
+    platform: linux/amd64
+    ports:
+      - 5432:5432
+    environment:
+      SRID: 4326
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    networks:
+      - bubble
+
+  citydb-tool:
+    container_name: citydb-tool
+    image: 3dcitydb/citydb-tool:1.4
+    platform: linux/amd64
+    stdin_open: true
+    tty: true
+    environment:
+      CITYDB_HOST: 3dcitydb
+      CITYDB_PORT: 5432
+      CITYDB_NAME: ${POSTGRES_DB}
+      CITYDB_USERNAME: ${POSTGRES_USER}
+      CITYDB_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./data:/data
+    networks:
+      - bubble
+    depends_on:
+      - 3dcitydb
+    profiles:
+      - tools
+
+  pg2b3dm:
+    container_name: pg2b3dm
+    image: geodan/pg2b3dm:2.28.0
+    platform: linux/amd64
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./data:/data
+    networks:
+      - bubble
+    depends_on:
+      - 3dcitydb
+    profiles:
+      - tools
+
+networks:
+  bubble:

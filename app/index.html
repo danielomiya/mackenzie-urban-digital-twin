@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <title>Visualizador 3D Tiles</title>
+    <link
+      href="https://cesium.com/downloads/cesiumjs/releases/1.147/Build/Cesium/Widgets/widgets.css"
+      rel="stylesheet"
+    >
+    <script
+      src="https://cesium.com/downloads/cesiumjs/releases/1.147/Build/Cesium/Cesium.js"
+    ></script>
+    <style>
+    html,
+    body,
+    #cesiumContainer {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #000;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="cesiumContainer"></div>
+
+    <script>
+    const viewer = new Cesium.Viewer('cesiumContainer', {
+      globe: false, // Sem globo: nem imagem de satélite nem terreno, só os prédios
+      baseLayerPicker: false, // Não há mapa de fundo para trocar sem o globo
+      geocoder: false, // A busca de endereços move a câmera até um globo que não existe
+      timeline: false, // Remove barra de tempo inferior
+      animation: false, // Remove controle de animação
+    });
+
+    async function carregarTileset() {
+      try {
+        const tileset = await Cesium.Cesium3DTileset.fromUrl('3dtiles/tileset.json');
+        const centro = Cesium.Cartographic.fromCartesian(tileset.boundingSphere.center);
+        const alturaChao = 762.98; // altura mínima da região do tileset.json
+        const origem = Cesium.Cartesian3.fromRadians(centro.longitude, centro.latitude, 0);
+        const destino = Cesium.Cartesian3.fromRadians(
+          centro.longitude,
+          centro.latitude,
+          -alturaChao,
+        );
+        tileset.modelMatrix = Cesium.Matrix4.fromTranslation(
+          Cesium.Cartesian3.subtract(destino, origem, new Cesium.Cartesian3()),
+        );
+        viewer.scene.primitives.add(tileset);
+
+        // Voa a câmera diretamente para a posição dos prédios
+        await viewer.zoomTo(tileset);
+      } catch (error) {
+        console.error('Erro ao carregar o 3D Tiles:', error);
+      }
+    }
+
+    carregarTileset();
+    </script>
+  </body>
+</html>
