@@ -12,8 +12,10 @@ Buildings listed in `data/mapping/predio_mapping.csv` also get the Prédio numbe
 campus. A footprint holding several Prédios carries them joined, as in `5/6`.
 
 The buildings are written twice: as GeoJSON footprints carrying their height, and as a CityJSON
-file of LOD1 blocks, each extruded from its ground elevation up to its roof. Convert the CityJSON
-to CityGML with `citygml-tools from-cityjson` when a tool needs it.
+file of LOD1 blocks, each extruded from its ground elevation up to its roof. Heights are measured
+in metres on a UTM projection, but both outputs are in the project reference system of
+`config/default_crs.yaml`. Convert the CityJSON to CityGML with `citygml-tools from-cityjson` when
+a tool needs it.
 
 Usage:
     uv run scripts/build_lod1_buildings.py
@@ -38,7 +40,8 @@ import typer
 from pyproj import Transformer
 from shapely.geometry.polygon import orient
 
-from mudt.exceptions import InconsistentCRSError
+from mudt.config import load_project_reference_system
+from mudt.exceptions import ConfigInvalidError, InconsistentCRSError
 from mudt.ingestion.base import source_name, write_atomically
 from mudt.las import crs_of
 from mudt.logging_config import configure_logging, get_logger
@@ -73,8 +76,11 @@ GROUND_RING_OUTER_M = (3.0, 10.0, 25.0)
 MIN_GROUND_POINTS = 3
 #: One storey.
 DEFAULT_HEIGHT_M = 3.0
-#: CityJSON stores vertices as integers times this scale: millimetres, as in the LiDAR.
-CITYJSON_SCALE = 0.001
+#: CityJSON stores vertices as integers times a scale. Heights keep millimetres, as in the
+#: LiDAR...
+CITYJSON_SCALE_M = 0.001
+#: ...and so do x and y, which in degrees is about 1e-8 (1 mm is 9e-9 degrees of latitude).
+CITYJSON_SCALE_DEG = 1e-8
 
 app = typer.Typer(add_completion=False)
 
@@ -193,19 +199,38 @@ def build_solid(polygon: Polygon, base_m: float, top_m: float) -> list:
 
 
 def write_cityjson(
-    path: Path, buildings: list[dict], footprints: Sequence[BaseGeometry], crs: CRS
+    path: Path,
+    buildings: list[dict],
+    footprints: Sequence[BaseGeometry],
+    metric_crs: CRS,
+    output_crs: CRS,
 ) -> None:
-    """Write every building that has a ground elevation as a CityJSON LOD1 block."""
+    """
+    Write every building that has a ground elevation as a CityJSON LOD1 block.
+
+    The blocks are extruded from `footprints`, which are in `metric_crs`, and written in
+    `output_crs`. Heights are written as measured, so they stay orthometric whatever `output_crs`.
+    """
     logger = get_logger()
-    minx, miny, *_ = shapely.total_bounds(footprints)
-    translate = (math.floor(minx), math.floor(miny), 0)
+    to_output = Transformer.from_crs(metric_crs, output_crs, always_xy=True)
+    minx, miny, *_ = to_output.transform_bounds(*shapely.total_bounds(footprints))
+    if output_crs.is_geographic:
+        horizontal_scale = CITYJSON_SCALE_DEG
+        translate = (minx, miny, 0.0)
+    else:
+        horizontal_scale = CITYJSON_SCALE_M
+        translate = (math.floor(minx), math.floor(miny), 0)
+    scale = (horizontal_scale, horizontal_scale, CITYJSON_SCALE_M)
     vertices: dict[tuple[int, ...], int] = {}
 
     def index_vertices(boundaries: list | tuple) -> list | int:
         if isinstance(boundaries, tuple):
+            x, y, z = boundaries
             key = tuple(
-                round((value - offset) / CITYJSON_SCALE)
-                for value, offset in zip(boundaries, translate, strict=True)
+                round((value - offset) / step)
+                for value, offset, step in zip(
+                    (*to_output.transform(x, y), z), translate, scale, strict=True
+                )
             )
             return vertices.setdefault(key, len(vertices))
         return [index_vertices(item) for item in boundaries]
@@ -246,8 +271,10 @@ def write_cityjson(
     document = {
         "type": "CityJSON",
         "version": "2.0",
-        "transform": {"scale": [CITYJSON_SCALE] * 3, "translate": list(translate)},
-        "metadata": {"referenceSystem": f"https://www.opengis.net/def/crs/EPSG/0/{crs.to_epsg()}"},
+        "transform": {"scale": list(scale), "translate": list(translate)},
+        "metadata": {
+            "referenceSystem": f"https://www.opengis.net/def/crs/EPSG/0/{output_crs.to_epsg()}"
+        },
         "CityObjects": city_objects,
         "vertices": [list(vertex) for vertex in vertices],
     }
@@ -271,9 +298,18 @@ def main(
     predio_mapping: Annotated[
         Path, typer.Option(help="Table of the campus Prédio numbers of each footprint.")
     ] = Path("data/mapping/predio_mapping.csv"),
+    crs_config: Annotated[
+        Path, typer.Option(help="Project reference system to write the buildings in.")
+    ] = Path("config/default_crs.yaml"),
 ) -> None:
     configure_logging(verbose)
     logger = get_logger()
+
+    try:
+        project_crs = load_project_reference_system(crs_config).horizontal_crs
+    except (ConfigInvalidError, FileNotFoundError) as exc:
+        logger.error("config_invalid", error=str(exc))
+        raise typer.Exit(2) from None
 
     try:
         predios = load_predio_mapping(predio_mapping)
@@ -323,11 +359,11 @@ def main(
 
     output = gpd.GeoDataFrame(
         buildings, geometry=footprints.geometry.to_numpy(), crs=footprints.crs
-    )
+    ).to_crs(project_crs)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.unlink(missing_ok=True)
     output.to_file(out, driver="GeoJSON")
-    write_cityjson(cityjson, buildings, metric_footprints, metric_crs)
+    write_cityjson(cityjson, buildings, metric_footprints, metric_crs, output.crs)
     logger.info(
         "buildings_written",
         paths=[str(out), str(cityjson)],

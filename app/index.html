@@ -53,9 +53,62 @@
 
         // Voa a câmera diretamente para a posição dos prédios
         await viewer.zoomTo(tileset);
+
+        mostrarAtributosAoClicar(tileset);
       } catch (error) {
         console.error('Erro ao carregar o 3D Tiles:', error);
       }
+    }
+
+    // Rótulos dos atributos gravados pelo pg2b3dm (veja sql/building_tiles.sql), na ordem exibida.
+    const ATRIBUTOS = {
+      predio_name: 'Prédio',
+      predio_number: 'Número',
+      cd_identificador: 'Identificador GeoSampa',
+      height_m: 'Altura (m)',
+    };
+
+    function escaparHtml(texto) {
+      const div = document.createElement('div');
+      div.textContent = texto;
+      return div.innerHTML;
+    }
+
+    // Ao clicar num prédio, destaca-o e mostra seus atributos no InfoBox do Cesium.
+    function mostrarAtributosAoClicar(tileset) {
+      const destaque = { feature: undefined, cor: new Cesium.Color() };
+      const selecionado = new Cesium.Entity();
+      const handler = viewer.screenSpaceEventHandler;
+
+      handler.setInputAction((clique) => {
+        if (Cesium.defined(destaque.feature)) {
+          destaque.feature.color = destaque.cor;
+          destaque.feature = undefined;
+        }
+
+        const feature = viewer.scene.pick(clique.position);
+        if (!(feature instanceof Cesium.Cesium3DTileFeature) || feature.tileset !== tileset) {
+          viewer.selectedEntity = undefined;
+          return;
+        }
+
+        destaque.feature = feature;
+        Cesium.Color.clone(feature.color, destaque.cor);
+        feature.color = Cesium.Color.YELLOW;
+
+        const linhas = Object.entries(ATRIBUTOS)
+          .filter(([id]) => feature.hasProperty(id))
+          .map(([id, rotulo]) => [rotulo, feature.getProperty(id)])
+          .filter(([, valor]) => valor !== undefined && valor !== null && valor !== '')
+          .map(([rotulo, valor]) =>
+            `<tr><th>${escaparHtml(rotulo)}</th><td>${escaparHtml(String(valor))}</td></tr>`)
+          .join('');
+
+        selecionado.name = feature.getProperty('predio_name')
+          || `Edificação ${feature.getProperty('cd_identificador')}`;
+        selecionado.description = `<table class="cesium-infoBox-defaultTable"><tbody>${linhas}</tbody></table>`;
+        viewer.selectedEntity = selecionado;
+      }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
     }
 
     carregarTileset();
