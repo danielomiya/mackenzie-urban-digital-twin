@@ -48,9 +48,10 @@ ARG USER_GID=${USER_UID}
 
 # perl: latexmk and tlmgr | curl, xz-utils: tlmgr downloads at runtime
 # git, less: source control in VS Code | procps: used by the VS Code server
+# python3: runs latexminted for minted v3 (Pygments ships bundled with the minted package)
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-    ca-certificates curl git less perl procps xz-utils libyaml-tiny-perl libfile-homedir-perl \
+    ca-certificates curl git less perl procps python3 xz-utils libyaml-tiny-perl libfile-homedir-perl \
     && rm -rf /var/lib/apt/lists/* \
     && groupadd --gid "${USER_GID}" "${USERNAME}" \
     && useradd --uid "${USER_UID}" --gid "${USER_GID}" --create-home --shell /bin/bash "${USERNAME}" \

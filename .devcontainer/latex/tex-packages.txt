@@ -30,3 +30,4 @@ microtype
 nomencl
 koma-script     # tocbasic, loaded by nomencl
 lipsum          # dummy text only; drop it (and its \usepackage) in your own article
+minted          # needed to display code

@@ -1,0 +1,5 @@
+{"rule":"SEMICOLON_COLON_SPACING","sentence":"^\\QO ambiente de persistência foi instanciado em contêineres Docker com PostgreSQL, PostGIS e 3DCityDB, configurado com o WGS-84 (EPSG:4326).\\E$"}
+{"rule":"UPPERCASE_AFTER_COMMA","sentence":"^\\QEdificações: os prédios do campus, identificados pelo número interno (e.g., Prédio 31) e pelo identificador do GeoSampa.\\E$"}
+{"rule":"MORFOLOGIK_RULE_PT_BR","sentence":"^\\QOs blocos foram gerados inicialmente em um formato mais simples de produzir programaticamente, o CityJSON, e depois convertidos para CityGML com a ferramenta citygml-tools.\\E$"}
+{"rule":"SEMICOLON_COLON_SPACING","sentence":"^\\QO KML utiliza coordenadas geográficas em WGS-84 (EPSG:4326), enquanto os dados do GeoSampa são distribuídos em SIRGAS 2000/UTM 23S (EPSG:31983).\\E$"}
+{"rule":"SEMICOLON_COLON_SPACING","sentence":"^\\QPara facilitar a integração com outras ferramentas já estabelecidas, optamos por reprojetar e normalizar todos em WGS-84 (EPSG:4326), que é o sistema de referência padrão usado globalmente para cartografia e navegação por satélite, incluindo o GPS.\\E$"}
